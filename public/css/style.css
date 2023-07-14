@@ -1,0 +1,10 @@
+.red-slashed{
+    background-color: rgba(255, 0, 0, 0.5);
+    text-decoration: line-through;
+}
+.orange-dif{
+    background-color: rgba(255, 166, 0, 0.5);
+}
+.green-missed{
+    background-color: rgba(0, 128, 0, 0.5);
+}
