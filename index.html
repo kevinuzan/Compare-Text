@@ -16,8 +16,9 @@
     <title>COMPARA TJ</title>
 </head>
 
-<body>
+<body onload="getJson()">
     <div class="align-items-center">
+        <audio id="myAudio" src="/audio/digitacao.mp3" loop></audio>
 
         <div class="row justify-content-center" style="text-align: center">
             <h1 class="text-center">COMPARADOR DE TEXTO TJ</h1>
@@ -35,10 +36,14 @@
         <br />
         <div class="row justify-content-center mt-3" style="text-align: center">
             <div class="field-container" style="width: 55%;">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary" onclick="fazerDownload()">
                     <i class="fas fa-download"></i>
                     <small>BAIXAR</small>
                 </button>
+            </div>
+            <div class="field-container mt-2" style="width: 55%;">
+                <select class="form-select" id="textSelect">
+                </select>
             </div>
         </div>
         <div class="d-flex flex-wrap justify-content-center align-items-center mt-3">

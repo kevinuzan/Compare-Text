@@ -15,6 +15,8 @@ app.use('/css', express.static(path.join(__dirname, 'public/css')));
 app.use('/src', express.static(path.join(__dirname, 'public/src')));
 app.use('/html', express.static(path.join(__dirname, 'public/html')));
 app.use('/img', express.static(path.join(__dirname, 'public/img')));
+app.use('/audio', express.static(path.join(__dirname, 'public/audio')));
+app.use('/json', express.static(path.join(__dirname, 'public/json')));
 app.use('/temp_folder', express.static(path.join(__dirname, 'public/temp_folder')));
 app.use('/', express.static(path.join(__dirname, '/index.html')));
 
