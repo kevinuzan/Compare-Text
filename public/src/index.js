@@ -1,5 +1,5 @@
 var string_base = '';
-var selectData = '';
+var selectData = '<option value="Digite">Digite Seu Texto</option>';
 async function getJson() {
     fetch('/json/text.json')
         .then(response => response.json())
@@ -32,7 +32,7 @@ function saveJson(data) {
     dataJson = data
 }
 
-async function getData() {
+async function getData_() {
     const array_base = string_base.split(' ');
     var string_comp = $('#textData')[0].value;
     const array_comp = string_comp.split(' ');
@@ -244,9 +244,15 @@ function startCounter() {
         playAudio();
         $('#notaUser')[0].innerHTML = `Nota: 8,0/8,0`;
         $('#errosUser')[0].innerHTML = `Erros: 0`;
-        string_base = dataJson[document.getElementById('textSelect').value]
+        if (document.getElementById('textSelect').value != 'Digite') string_base = dataJson[document.getElementById('textSelect').value]
+        else string_base = $('#textDataInsert')[0].value
     }
 }
+async function changeSelect() {
+    if (document.getElementById('textSelect').value != 'Digite') $('#textDataInsert')[0].value = dataJson[document.getElementById('textSelect').value];
+    else $('#textDataInsert')[0].value = ''
+}
+
 
 function stopCounter() {
     clearInterval(intervalId);
@@ -311,21 +317,25 @@ function fazerDownload() {
 }
 
 
-function pressTest() {
+function getData() {
     // Exemplo de uso
-    const text1 = "A agricultura é uma atividade importante para a economia de qualquer país. Ela desempenha um papel vital no fornecimento de alimentos para a população e contribui para o desenvolvimento econômico. No entanto, a agricultura intensiva pode ter impactos negativos no meio ambiente. Um dos problemas associados à agricultura intensiva é o uso excessivo de agrotóxicos. Os agrotóxicos são substâncias químicas utilizadas para controlar pragas e doenças nas plantações. Apesar de serem eficazes na proteção das plantas, seu uso descontrolado pode contaminar o solo, a água e afetar a saúde humana. Outro desafio enfrentado pela agricultura é a perda de biodiversidade. A monocultura, prática comum na agricultura intensiva, envolve o cultivo de uma única espécie em larga escala. Isso pode levar à perda de diversidade genética e aumentar a vulnerabilidade das plantações a doenças e pragas. Além disso, o uso excessivo de fertilizantes pode causar a eutrofização dos corpos d'água. Os fertilizantes contêm nutrientes como nitrogênio e fósforo, que podem ser arrastados pela chuva e acabar nos rios e lagos. Esse aumento nos nutrientes pode levar ao crescimento excessivo de algas, causando a morte de peixes e outros organismos aquáticos. É importante buscar práticas agrícolas mais sustentáveis, que minimizem os impactos negativos da agricultura no meio ambiente. A agricultura orgânica, por exemplo, utiliza métodos naturais de controle de pragas e fertilizantes orgânicos. Além disso, a diversificação de culturas e o uso de técnicas de conservação do solo podem ajudar a preservar a biodiversidade e a saúde dos ecossistemas. Investir em pesquisa e educação também é essencial para promover a agricultura sustentável. Novas tecnologias e conhecimentos científicos podem contribuir para o desenvolvimento de práticas agrícolas mais eficientes e ambientalmente responsáveis. A conscientização da população sobre a importância da agricultura sustentável também desempenha um papel crucial na adoção dessas práticas. Em conclusão, a agricultura desempenha um papel fundamental na sociedade, mas é necessário adotar medidas para minimizar os impactos negativos no meio ambiente. A busca por práticas agrícolas mais sustentáveis e o investimento em pesquisa e educação são essenciais para garantir a segurança alimentar e a preservação dos recursos naturais.";
-    const text2 = "A agricultura é uma atividade importante para a economia de qualquer país. Ela desempenha um papel vital no fornecimento de alimentos para a população e contribui para o desenvolvimento economico. Isso pode levar à perda de diversidade genética e aumentar a vulnerabilidade das plantações a doenças e pragas. No entanto, a agricultura intensiva pode ter impactos negativos no meio ambiente. Um dos problemas associados à agricultura intensiva é o uso excessivo de agrotóxcios. Os agrotóxicos são substâncias químicas utilizadas para controlar pragas e doenças nas plantações. Apesar de serem eficazes na proteção das plantas, seu uso descontrolado pode contaminar o solo, a água e afetar a saúde humana. Outro desafio enfrentado pela agricultura é a perda de biodiversidade. Além disso, o uso excessivo de fertilizantes pode causar a eutrofização dos corpos d'água. Os fertilizantes contêm nutrientes como nitrogênio e fósforo, que podem ser arrastados pela chuva e acabar nos rios e lagos. Esse aumento nos nutrientes pode levar ao crescimento exessivo de algas, causando a morte de peixes e outros organismos aquáticos. É importante buscar práticas agrícolas mais sustentáveis, que minimizem os impactos negativos da agricultura no meio ambiente.  Além disso, a diversificação de culturas e o uso de técnicas de conservação do solo podem ajudar a preservar a biodiversidade e a saúde dos ecossistemas. Investir em pesquisa e educação também é essencial para promover a agricultura sustentável. Novas tecnologias e conhecimentos científicos podem contribuir para o desenvolvimento de práticas agrícolas mais eficientes e ambientalmente responsáveis. A conscientização da população sobre a importância da agricultura sustentável também desempenha um papel crucial na adoção dessas práticas. Em conclusão, a agricultura desempenha um papel fundamental na sociedade, mas é necessário adotar medidas para minimizar os impactos negativos no meio ambiente. sdasdasdas por práticas agrícolas mais sustentáveis e o investimento em pesquisa e educação";
+    //const text1 = "A agricultura é uma atividade importante para a economia de qualquer país. Ela desempenha um papel vital no fornecimento de alimentos para a população e contribui para o desenvolvimento econômico. No entanto, a agricultura intensiva pode ter impactos negativos no meio ambiente. Um dos problemas associados à agricultura intensiva é o uso excessivo de agrotóxicos. Os agrotóxicos são substâncias químicas utilizadas para controlar pragas e doenças nas plantações. Apesar de serem eficazes na proteção das plantas, seu uso descontrolado pode contaminar o solo, a água e afetar a saúde humana. Outro desafio enfrentado pela agricultura é a perda de biodiversidade. A monocultura, prática comum na agricultura intensiva, envolve o cultivo de uma única espécie em larga escala. Isso pode levar à perda de diversidade genética e aumentar a vulnerabilidade das plantações a doenças e pragas. Além disso, o uso excessivo de fertilizantes pode causar a eutrofização dos corpos d'água. Os fertilizantes contêm nutrientes como nitrogênio e fósforo, que podem ser arrastados pela chuva e acabar nos rios e lagos. Esse aumento nos nutrientes pode levar ao crescimento excessivo de algas, causando a morte de peixes e outros organismos aquáticos. É importante buscar práticas agrícolas mais sustentáveis, que minimizem os impactos negativos da agricultura no meio ambiente. A agricultura orgânica, por exemplo, utiliza métodos naturais de controle de pragas e fertilizantes orgânicos. Além disso, a diversificação de culturas e o uso de técnicas de conservação do solo podem ajudar a preservar a biodiversidade e a saúde dos ecossistemas. Investir em pesquisa e educação também é essencial para promover a agricultura sustentável. Novas tecnologias e conhecimentos científicos podem contribuir para o desenvolvimento de práticas agrícolas mais eficientes e ambientalmente responsáveis. A conscientização da população sobre a importância da agricultura sustentável também desempenha um papel crucial na adoção dessas práticas. Em conclusão, a agricultura desempenha um papel fundamental na sociedade, mas é necessário adotar medidas para minimizar os impactos negativos no meio ambiente. A busca por práticas agrícolas mais sustentáveis e o investimento em pesquisa e educação são essenciais para garantir a segurança alimentar e a preservação dos recursos naturais.";
+    //const text2 = "A agricultura é uma atividade importante para a economia de qualquer país. Ela desempenha um papel vital no fornecimento de alimentos para a população e contribui para o desenvolvimento economico. Isso pode levar à perda de diversidade genética e aumentar a vulnerabilidade das plantações a doenças e pragas. No entanto, a agricultura intensiva pode ter impactos negativos no meio ambiente. Um dos problemas associados à agricultura intensiva é o uso excessivo de agrotóxcios. Os agrotóxicos são substâncias químicas utilizadas para controlar pragas e doenças nas plantações. Apesar de serem eficazes na proteção das plantas, seu uso descontrolado pode contaminar o solo, a água e afetar a saúde humana. Outro desafio enfrentado pela agricultura é a perda de biodiversidade. Além disso, o uso excessivo de fertilizantes pode causar a eutrofização dos corpos d'água. Os fertilizantes contêm nutrientes como nitrogênio e fósforo, que podem ser arrastados pela chuva e acabar nos rios e lagos. Esse aumento nos nutrientes pode levar ao crescimento exessivo de algas, causando a morte de peixes e outros organismos aquáticos. É importante buscar práticas agrícolas mais sustentáveis, que minimizem os impactos negativos da agricultura no meio ambiente.  Além disso, a diversificação de culturas e o uso de técnicas de conservação do solo podem ajudar a preservar a biodiversidade e a saúde dos ecossistemas. Investir em pesquisa e educação também é essencial para promover a agricultura sustentável. Novas tecnologias e conhecimentos científicos podem contribuir para o desenvolvimento de práticas agrícolas mais eficientes e ambientalmente responsáveis. A conscientização da população sobre a importância da agricultura sustentável também desempenha um papel crucial na adoção dessas práticas. Em conclusão, a agricultura desempenha um papel fundamental na sociedade, mas é necessário adotar medidas para minimizar os impactos negativos no meio ambiente. sdasdasdas por práticas agrícolas mais sustentáveis e o investimento em pesquisa e educação";
+
+    const text1 = $('#textDataInsert')[0].value
+    const text2 = $('#textData')[0].value
+
     const [diff, erros] = lcs(text1, text2);
     $('#resultado')[0].innerHTML = diff;
     var nota = (8 - (erros * 0.05)).toString().replaceAll('.', ',');
-    if (nota < 0) nota = 0;
-    $('#notaUser')[0].innerHTML = `Nota: ${nota}/8,0`;
+    if (parseInt(nota) < 0) nota = 0;
+    $('#notaUser')[0].innerHTML = `Nota: ${nota}/8,0`;''
     $('#errosUser')[0].innerHTML = `Erros: ${erros}`;
     stopCounter();
 }
 
 
-function lcs(text1, text2) {
+function lcs_words(text1, text2) {
     const m = text1.length;
     const n = text2.length;
 
@@ -349,11 +359,8 @@ function lcs(text1, text2) {
     let j = n;
     let erros = 0;
     while (i > 0 || j > 0) {
-        if (i > 0 && j > 0 && text1[i - 1] === text2[j - 1] && text1[i - 2] === text2[j - 2]) {
+        if (i > 0 && j > 0 && text1[i - 1] === text2[j - 1]) {
             diffs.unshift(text1[i - 1]);
-            diffs.unshift(text1[i - 2]);
-            i--;
-            j--;
             i--;
             j--;
         }
@@ -367,60 +374,93 @@ function lcs(text1, text2) {
             erros++;
         }
     }
-
+    //console.log(diffs.join(''))
     return [diffs.join(''), erros];
 }
 
-// function lcs(text1, text2) {
-//     const words1 = text1.split(" ");
-//     const words2 = text2.split(" ");
-//     const m = words1.length;
-//     const n = words2.length;
+function lcs(text1, text2) {
+    const words1 = text1.split(" ");
+    const words2 = text2.split(" ");
+    const m = words1.length;
+    const n = words2.length;
 
-//     // Inicializar a tabela LCS
-//     const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
+    // Inicializar a tabela LCS
+    const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
 
-//     // Preencher a tabela LCS
-//     for (let i = 1; i <= m; i++) {
-//         for (let j = 1; j <= n; j++) {
-//             if (words1[i - 1] === words2[j - 1]) {
-//                 dp[i][j] = dp[i - 1][j - 1] + 1;
-//             } else {
-//                 dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
-//             }
-//         }
-//     }
+    // Preencher a tabela LCS
+    for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+            if (words1[i - 1] === words2[j - 1]) {
+                dp[i][j] = dp[i - 1][j - 1] + 1;
+            } else {
+                dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+            }
+        }
+    }
 
-//     // Reconstruir as diferenças
-//     const diffs = [];
-//     let erros = 0;
+    // Reconstruir as diferenças
+    const diffs = [];
+    let erros = 0;
+    const threshold = 0.8;
+    let i = m;
+    let j = n;
+    var diffs_aux = '';
+    let erros_aux = 0;
 
-//     let i = m;
-//     let j = n;
+    while (i > 0 || j > 0) {
+        if (words2[j - 1] === '') {
+            diffs.unshift(`<span class="red-slashed">&nbsp;</span>`);
+            console.log('aaaaaaaaaaaaa')
+            j--;
+        }
+        else if (i > 0 && j > 0 && words1[i - 1] === words2[j - 1]) {
+            diffs.unshift(`<span>${words1[i - 1]}&nbsp;</span>`);
+            i--;
+            j--;
+        } else if (j > 0 && (i === 0 || dp[i][j - 1] >= dp[i - 1][j])) {
+            if (i !== 0) {
+                var similar = isSimilar(words1[i - 1], words2[j - 1], threshold);
+                if (similar) {
+                    [diffs_aux, erros_aux] = lcs_words(words1[i - 1], words2[j - 1]);
+                    diffs.unshift(diffs_aux);
+                    erros += erros_aux;
+                    i--;
+                } else {
+                    diffs.unshift(`<span class="red-slashed">${words2[j - 1]}&nbsp;</span>`);
+                    erros += words2[j - 1].length + 1;
+                }
+            } else {
+                diffs.unshift(`<span class="red-slashed">${words2[j - 1]}&nbsp;</span>`);
+                erros += words2[j - 1].length + 1;
+            }
+            j--;
+        } else if (i > 0 && (j === 0 || dp[i][j - 1] < dp[i - 1][j])) {
+            if (j !== 0) {
+                var similar = isSimilar(words1[i - 1], words2[j - 1], threshold);
+                if (similar) {
+                    [diffs_aux, erros_aux] = lcs_words(words1[i - 1], words2[j - 1]);
+                    diffs.unshift(diffs_aux);
+                    erros += erros_aux;
+                    j--;
+                } else {
+                    diffs.unshift(`<span class="green-missed">${words1[i - 1]}&nbsp;</span>`);
+                    erros += words1[i - 1].length + 1;
+                }
+            } else {
+                diffs.unshift(`<span class="green-missed">${words1[i - 1]}&nbsp;</span>`);
+                erros += words1[i - 1].length + 1;
+            }
+            i--;
+        } else if (i === 0) {
+            diffs.unshift(`<span class="red-slashed">${words2[j - 1]}&nbsp;</span>`);
+            erros += words2[j - 1].length + 1;
+            j--;
+        } else if (j === 0) {
+            diffs.unshift(`<span class="green-missed">${words1[i - 1]}&nbsp;</span>`);
+            erros += words1[i - 1].length + 1;
+            i--;
+        }
+    }
 
-//     while (i > 0 || j > 0) {
-//         if (i > 0 && j > 0 && words1[i - 1] === words2[j - 1]) {
-//             diffs.unshift(words1[i - 1]);
-//             i--;
-//             j--;
-//         } else if (j > 0 && (i === 0 || dp[i][j - 1] >= dp[i - 1][j])) {
-//             diffs.unshift(`<span class="red-slashed">${words2[j - 1]}</span>`);
-//             j--;
-//             erros += words2[j - 1].length;
-//         } else if (i > 0 && (j === 0 || dp[i][j - 1] < dp[i - 1][j])) {
-//             diffs.unshift(`<span class="green-missed">${words1[i - 1]}</span>`);
-//             i--;
-//             erros += words1[i - 1].length;
-//         } else if (i === 0) {
-//             diffs.unshift(`<span class="red-slashed">${words2[j - 1]}</span>`);
-//             j--;
-//             erros += words2[j - 1].length;
-//         } else if (j === 0) {
-//             diffs.unshift(`<span class="green-missed">${words1[i - 1]}</span>`);
-//             i--;
-//             erros += words1[i - 1].length;
-//         }
-//     }
-
-//     return [diffs.join(" "), erros];
-// }
+    return [diffs.join(""), erros];
+}
