@@ -329,7 +329,7 @@ function getData() {
     $('#resultado')[0].innerHTML = diff;
     var nota = (8 - (erros * 0.05)).toString().replaceAll('.', ',');
     if (parseInt(nota) < 0) nota = 0;
-    $('#notaUser')[0].innerHTML = `Nota: ${nota}/8,0`;''
+    $('#notaUser')[0].innerHTML = `Nota: ${nota}/8,0`; ''
     $('#errosUser')[0].innerHTML = `Erros: ${erros}`;
     stopCounter();
 }
@@ -401,7 +401,7 @@ function lcs(text1, text2) {
     // Reconstruir as diferenças
     const diffs = [];
     let erros = 0;
-    const threshold = 0.8;
+    const threshold = 0.75;
     let i = m;
     let j = n;
     var diffs_aux = '';
@@ -410,7 +410,7 @@ function lcs(text1, text2) {
     while (i > 0 || j > 0) {
         if (words2[j - 1] === '') {
             diffs.unshift(`<span class="red-slashed">&nbsp;</span>`);
-            console.log('aaaaaaaaaaaaa')
+            erros++;
             j--;
         }
         else if (i > 0 && j > 0 && words1[i - 1] === words2[j - 1]) {
