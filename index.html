@@ -1,87 +1,193 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html;chartset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  <link href="/css/style.css" rel="stylesheet" />
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/7113fe860c.js" crossorigin="anonymous"></script>
   <title>Sea Salt & Paper - Contador de Pontos</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background: #f0f0f0;
-      padding: 20px;
-      max-width: 600px;
-      margin: auto;
-    }
-    h1 {
-      text-align: center;
-    }
-    .section {
-      margin-bottom: 20px;
-    }
-    .section label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-    input[type="number"] {
-      width: 100px;
-      padding: 5px;
-      margin-right: 10px;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-    }
-    #resultado {
-      margin-top: 20px;
-      font-size: 20px;
-      font-weight: bold;
-    }
-  </style>
+
 </head>
+
 <body>
-  <h1>Contador de Pontos - Sea Salt & Paper</h1>
 
-  <div class="section">
-    <label>Cartas de Par (Navio + Marinheiro)</label>
-    <input type="number" id="par" value="0" min="0">
+  <div style="text-align:center; margin-bottom:20px;">
+    <label for="seletorJogo"><strong>Selecione o jogo:</strong></label>
+    <select id="seletorJogo" onchange="trocarJogo()">
+      <option value="ssap">Sea Salt & Paper</option>
+      <option value="agricola">Agrícola</option>
+    </select>
+  </div>
+  <div id="placar-ssap" class="placar-jogo">
+    <h1>Contador de Pontos - Sea Salt & Paper</h1>
+    <table id="tabela-pontos" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Jogador</th>
+          <th>Par</th>
+          <th>Animal</th>
+          <th>Coleção</th>
+          <th>Bônus</th>
+          <th>Última</th>
+          <th>Total da Rodada</th>
+          <th>Total Geral</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Jogadores -->
+        <tr>
+          <td><input type="text" class="form-control" id="nome-1" placeholder="Jogador 1"></td>
+          <td><input type="number" class="form-control" id="par-1" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="animal-1" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="colecao-1" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="bonus-1" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="ultima-1" value="0" min="0"></td>
+          <td><span id="total-rodada-1">0</span></td>
+          <td><span id="total-geral-1">0</span></td>
+        </tr>
+        <tr>
+          <td><input type="text" class="form-control" id="nome-2" placeholder="Jogador 2"></td>
+          <td><input type="number" class="form-control" id="par-2" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="animal-2" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="colecao-2" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="bonus-2" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="ultima-2" value="0" min="0"></td>
+          <td><span id="total-rodada-2">0</span></td>
+          <td><span id="total-geral-2">0</span></td>
+        </tr>
+        <!-- Repete até o jogador 5 -->
+        <tr>
+          <td><input type="text" class="form-control" id="nome-3" placeholder="Jogador 3"></td>
+          <td><input type="number" class="form-control" id="par-3" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="animal-3" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="colecao-3" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="bonus-3" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="ultima-3" value="0" min="0"></td>
+          <td><span id="total-rodada-3">0</span></td>
+          <td><span id="total-geral-3">0</span></td>
+        </tr>
+        <tr>
+          <td><input type="text" class="form-control" id="nome-4" placeholder="Jogador 4"></td>
+          <td><input type="number" class="form-control" id="par-4" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="animal-4" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="colecao-4" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="bonus-4" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="ultima-4" value="0" min="0"></td>
+          <td><span id="total-rodada-4">0</span></td>
+          <td><span id="total-geral-4">0</span></td>
+        </tr>
+        <tr>
+          <td><input type="text" class="form-control" id="nome-5" placeholder="Jogador 5"></td>
+          <td><input type="number" class="form-control" id="par-5" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="animal-5" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="colecao-5" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="bonus-5" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="ultima-5" value="0" min="0"></td>
+          <td><span id="total-rodada-5">0</span></td>
+          <td><span id="total-geral-5">0</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary" onclick="salvarRodada()">Salvar Rodada</button>
+    <button onclick="limparJogo()">Limpar Jogo</button>
   </div>
 
-  <div class="section">
-    <label>Cartas de Animal Marinho (cada uma vale 1 ponto)</label>
-    <input type="number" id="animal" value="0" min="0">
+  <!-- Placar Agrícola -->
+  <div id="placar-agricola" class="placar-jogo" style="display:none;">
+    <h2>Agrícola - Contador de Pontos</h2>
+    <table id="tabela-pontos-agricola" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Jogador</th>
+          <th>Campos</th>
+          <th>Pastagens</th>
+          <th>Grãos</th>
+          <th>Vegetais</th>
+          <th>Ovelhas</th>
+          <th>Javalis</th>
+          <th>Gado</th>
+          <th>Casas de Barro</th>
+          <th>Casas de Pedra</th>
+          <th>Cartas e outros bônus</th>
+          <th>Total Geral</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Jogadores -->
+        <tr>
+          <td><input type="text" class="form-control" id="Jogador-1" placeholder="Jogador 1"></td>
+          <td><input type="number" class="form-control" id="Campos-1" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="Pastagens-1" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="Grãos-1" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="Vegetais-1" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="Ovelhas-1" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="Javalis-1" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="Gado-1" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="CasasBarro-1" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="CasasPedra-1" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="Bonus-1" value="0" min="0"></td>
+          <td><span id="total-geral-1">0</span></td>
+        </tr>
+        <tr>
+          <td><input type="text" class="form-control" id="nome-2" placeholder="Jogador 2"></td>
+          <td><input type="number" class="form-control" id="par-2" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="animal-2" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="colecao-2" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="bonus-2" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="ultima-2" value="0" min="0"></td>
+          <td><span id="total-rodada-2">0</span></td>
+          <td><span id="total-geral-2">0</span></td>
+        </tr>
+        <!-- Repete até o jogador 5 -->
+        <tr>
+          <td><input type="text" class="form-control" id="nome-3" placeholder="Jogador 3"></td>
+          <td><input type="number" class="form-control" id="par-3" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="animal-3" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="colecao-3" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="bonus-3" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="ultima-3" value="0" min="0"></td>
+          <td><span id="total-rodada-3">0</span></td>
+          <td><span id="total-geral-3">0</span></td>
+        </tr>
+        <tr>
+          <td><input type="text" class="form-control" id="nome-4" placeholder="Jogador 4"></td>
+          <td><input type="number" class="form-control" id="par-4" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="animal-4" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="colecao-4" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="bonus-4" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="ultima-4" value="0" min="0"></td>
+          <td><span id="total-rodada-4">0</span></td>
+          <td><span id="total-geral-4">0</span></td>
+        </tr>
+        <tr>
+          <td><input type="text" class="form-control" id="nome-5" placeholder="Jogador 5"></td>
+          <td><input type="number" class="form-control" id="par-5" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="animal-5" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="colecao-5" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="bonus-5" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="ultima-5" value="0" min="0"></td>
+          <td><span id="total-rodada-5">0</span></td>
+          <td><span id="total-geral-5">0</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button onclick="calcularAgricola()">Calcular Pontuação</button>
+    <div id="resultado-agricola" style="margin-top:15px; font-weight:bold;"></div>
+  </div>
   </div>
 
-  <div class="section">
-    <label>Cartas de Coleção (Cangrejo, Pinguim, Polvo)</label>
-    <input type="number" id="colecao" value="0" min="0">
-  </div>
 
-  <div class="section">
-    <label>Cartas de Bônus (valor total)</label>
-    <input type="number" id="bonus" value="0" min="0">
-  </div>
-
-  <div class="section">
-    <label>Bônus de Última Jogada (Take Initiative ou Stop)</label>
-    <input type="number" id="ultima" value="0" min="0">
-  </div>
-
-  <button onclick="calcularPontos()">Calcular Pontos</button>
-
-  <div id="resultado">Total: 0 pontos</div>
-
-  <script>
-    function calcularPontos() {
-      const par = parseInt(document.getElementById('par').value) * 2;
-      const animal = parseInt(document.getElementById('animal').value);
-      const colecao = parseInt(document.getElementById('colecao').value);
-      const bonus = parseInt(document.getElementById('bonus').value);
-      const ultima = parseInt(document.getElementById('ultima').value);
-
-      const total = par + animal + colecao + bonus + ultima;
-
-      document.getElementById('resultado').innerText = Total: ${total} pontos;
-    }
-  </script>
+  <script src="/src/index.js"></script>
 </body>
+
 </html>

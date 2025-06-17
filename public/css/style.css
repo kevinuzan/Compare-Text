@@ -1,10 +1,68 @@
-.red-slashed{
-    background-color: rgba(255, 0, 0, 0.5);
-    text-decoration: line-through;
+body {
+    font-family: sans-serif;
+    background: #f0f0f0;
+    padding: 20px;
+    max-width: 900px;        /* Aumentei para caber a tabela com várias rodadas */
+    margin: auto;
 }
-.orange-dif{
-    background-color: rgba(255, 166, 0, 0.5);
+
+h1 {
+    text-align: center;
 }
-.green-missed{
-    background-color: rgba(0, 128, 0, 0.5);
+
+.section {
+    margin-bottom: 20px;
+}
+
+.section label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="number"], input[type="text"] {
+    width: 80px;              /* Deixei mais compacto pro caso de muitos jogadores/rodadas */
+    padding: 5px;
+    margin: 2px;
+    text-align: center;        /* Centraliza o texto dentro dos inputs */
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    display: block;
+    margin: 20px auto;          /* Centraliza o botão */
+}
+
+#resultado {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Novo: Deixa a tabela centralizada e com bordas visíveis */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Para destacar o cabeçalho */
+table thead {
+    background-color: #e9ecef;
+    font-weight: bold;
+}
+
+/* Se quiser, pode também adicionar um leve sombreamento */
+table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
 }
