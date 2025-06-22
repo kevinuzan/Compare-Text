@@ -14,7 +14,7 @@
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
     crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/7113fe860c.js" crossorigin="anonymous"></script>
-  <title>Sea Salt & Paper - Contador de Pontos</title>
+  <title>Contador de Pontos</title>
 
 </head>
 
@@ -24,6 +24,7 @@
     <label for="seletorJogo"><strong>Selecione o jogo:</strong></label>
     <select id="seletorJogo" onchange="trocarJogo()">
       <option value="ssap">Sea Salt & Paper</option>
+      <option value="encantados">Encantados</option>
       <option value="agricola">Agrícola</option>
     </select>
   </div>
@@ -183,6 +184,44 @@
 
     <button onclick="calcularAgricola()">Calcular Pontuação</button>
     <div id="resultado-agricola" style="margin-top:15px; font-weight:bold;"></div>
+  </div>
+
+  <!-- Placa Encantados -->
+  <div id="placar-encantados" class="placar-jogo" style="display:none;">
+    <h1>Contador de Pontos - Encantados</h1>
+    <table id="tabela-pontos-encantados" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Jogador</th>
+          <th>Jardim</th>
+          <th>Canção</th>
+          <th>Bônus</th>
+          <th>Total da Rodada</th>
+          <th>Total Geral</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Jogadores -->
+        <tr>
+          <td><input type="text" class="form-control" id="nomeEncantados-1" placeholder="Jogador 1"></td>
+          <td><input type="number" class="form-control" id="jardim-1" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="cancao-1" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="bonusEncantados-1" value="0" min="0"></td>
+          <td><span id="totalRodadaEncantados-1">0</span></td>
+          <td><span id="totalGeralEncantados-1">0</span></td>
+        </tr>
+        <tr>
+          <td><input type="text" class="form-control" id="nomeEncantados-2" placeholder="Jogador 2"></td>
+          <td><input type="number" class="form-control" id="jardim-2" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="cancao-2" value="0" min="0"></td>
+          <td><input type="number" class="form-control" id="bonusEncantados-2" value="0" min="0"></td>
+          <td><span id="totalRodadaEncantados-2">0</span></td>
+          <td><span id="totalGeralEncantados-2">0</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary" onclick="salvarRodada()">Salvar Rodada</button>
+    <button onclick="limparJogo()">Limpar Jogo</button>
   </div>
   </div>
 
