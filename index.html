@@ -105,85 +105,118 @@
   <!-- Placar Agrícola -->
   <div id="placar-agricola" class="placar-jogo" style="display:none;">
     <h2>Agrícola - Contador de Pontos</h2>
-    <table id="tabela-pontos-agricola" class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>Jogador</th>
-          <th>Campos</th>
-          <th>Pastagens</th>
-          <th>Grãos</th>
-          <th>Vegetais</th>
-          <th>Ovelhas</th>
-          <th>Javalis</th>
-          <th>Gado</th>
-          <th>Casas de Barro</th>
-          <th>Casas de Pedra</th>
-          <th>Cartas e outros bônus</th>
-          <th>Total Geral</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Jogadores -->
-        <tr>
-          <td><input type="text" class="form-control" id="Jogador-1" placeholder="Jogador 1"></td>
-          <td><input type="number" class="form-control" id="Campos-1" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="Pastagens-1" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="Grãos-1" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="Vegetais-1" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="Ovelhas-1" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="Javalis-1" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="Gado-1" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="CasasBarro-1" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="CasasPedra-1" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="Bonus-1" value="0" min="0"></td>
-          <td><span id="total-geral-1">0</span></td>
-        </tr>
-        <tr>
-          <td><input type="text" class="form-control" id="nome-2" placeholder="Jogador 2"></td>
-          <td><input type="number" class="form-control" id="par-2" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="animal-2" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="colecao-2" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="bonus-2" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="ultima-2" value="0" min="0"></td>
-          <td><span id="total-rodada-2">0</span></td>
-          <td><span id="total-geral-2">0</span></td>
-        </tr>
-        <!-- Repete até o jogador 5 -->
-        <tr>
-          <td><input type="text" class="form-control" id="nome-3" placeholder="Jogador 3"></td>
-          <td><input type="number" class="form-control" id="par-3" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="animal-3" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="colecao-3" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="bonus-3" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="ultima-3" value="0" min="0"></td>
-          <td><span id="total-rodada-3">0</span></td>
-          <td><span id="total-geral-3">0</span></td>
-        </tr>
-        <tr>
-          <td><input type="text" class="form-control" id="nome-4" placeholder="Jogador 4"></td>
-          <td><input type="number" class="form-control" id="par-4" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="animal-4" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="colecao-4" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="bonus-4" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="ultima-4" value="0" min="0"></td>
-          <td><span id="total-rodada-4">0</span></td>
-          <td><span id="total-geral-4">0</span></td>
-        </tr>
-        <tr>
-          <td><input type="text" class="form-control" id="nome-5" placeholder="Jogador 5"></td>
-          <td><input type="number" class="form-control" id="par-5" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="animal-5" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="colecao-5" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="bonus-5" value="0" min="0"></td>
-          <td><input type="number" class="form-control" id="ultima-5" value="0" min="0"></td>
-          <td><span id="total-rodada-5">0</span></td>
-          <td><span id="total-geral-5">0</span></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <button onclick="calcularAgricola()">Calcular Pontuação</button>
-    <div id="resultado-agricola" style="margin-top:15px; font-weight:bold;"></div>
+    <div class="tabelaAgricola">
+      <table id="tabela-pontos-agricola" class="table table-bordered table-striped tabelaAgricola">
+        <thead>
+          <tr>
+            <th>Jogador</th>
+            <th>Campos</th>
+            <th>Pastagens</th>
+            <th>Grãos</th>
+            <th>Vegetais</th>
+            <th>Ovelhas</th>
+            <th>Javalis</th>
+            <th>Gado</th>
+            <th>Casas de Barro</th>
+            <th>Casas de Pedra</th>
+            <th>Membros da Família</th>
+            <th>Estábulo Cercado</th>
+            <th>Espaço sem Preencher</th>
+            <th>Cartas e outros bônus</th>
+            <th>Total Geral</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Jogadores -->
+          <tr>
+            <td><input type="text" class="form-control" id="Jogador-1" placeholder="Jogador 1"></td>
+            <td><input type="number" class="form-control" id="Campos-1" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Pastagens-1" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Graos-1" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Vegetais-1" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Ovelhas-1" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Javalis-1" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Gado-1" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="CasasBarro-1" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="CasasPedra-1" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Membro-1" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="EstabuloCercado-1" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="FazendaEmBranco-1" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="BonusAgricola-1" value="0" min="0"></td>
+            <td><span id="totalGeralAgricola-1">0</span></td>
+          </tr>
+          <tr>
+            <td><input type="text" class="form-control" id="Jogador-2" placeholder="Jogador 2"></td>
+            <td><input type="number" class="form-control" id="Campos-2" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Pastagens-2" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Graos-2" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Vegetais-2" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Ovelhas-2" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Javalis-2" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Gado-2" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="CasasBarro-2" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="CasasPedra-2" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Membro-2" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="EstabuloCercado-2" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="FazendaEmBranco-2" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="BonusAgricola-2" value="0" min="0"></td>
+            <td><span id="totalGeralAgricola-2">0</span></td>
+          </tr>
+          <tr>
+            <td><input type="text" class="form-control" id="Jogador-3" placeholder="Jogador 3"></td>
+            <td><input type="number" class="form-control" id="Campos-3" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Pastagens-3" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Graos-3" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Vegetais-3" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Ovelhas-3" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Javalis-3" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Gado-3" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="CasasBarro-3" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="CasasPedra-3" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Membro-3" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="EstabuloCercado-3" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="FazendaEmBranco-3" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="BonusAgricola-3" value="0" min="0"></td>
+            <td><span id="totalGeralAgricola-3">0</span></td>
+          </tr>
+          <tr>
+            <td><input type="text" class="form-control" id="Jogador-4" placeholder="Jogador 4"></td>
+            <td><input type="number" class="form-control" id="Campos-4" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Pastagens-4" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Graos-4" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Vegetais-4" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Ovelhas-4" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Javalis-4" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Gado-4" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="CasasBarro-4" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="CasasPedra-4" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Membro-4" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="EstabuloCercado-4" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="FazendaEmBranco-4" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="BonusAgricola-4" value="0" min="0"></td>
+            <td><span id="totalGeralAgricola-4">0</span></td>
+          </tr>
+          <tr>
+            <td><input type="text" class="form-control" id="Jogador-5" placeholder="Jogador 5"></td>
+            <td><input type="number" class="form-control" id="Campos-5" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Pastagens-5" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Graos-5" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Vegetais-5" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Ovelhas-5" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Javalis-5" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Gado-5" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="CasasBarro-5" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="CasasPedra-5" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="Membro-5" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="EstabuloCercado-5" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="FazendaEmBranco-5" value="0" min="0"></td>
+            <td><input type="number" class="form-control" id="BonusAgricola-5" value="0" min="0"></td>
+            <td><span id="totalGeralAgricola-5">0</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button onclick="limparJogo()">Limpar Jogo</button>
   </div>
 
   <!-- Placa Encantados -->
@@ -204,7 +237,7 @@
         <!-- Jogadores -->
         <tr>
           <td><input type="text" class="form-control" id="nomeEncantados-1" placeholder="Jogador 1"></td>
-          <td><input type="number" class="form-control" id="jardim-1" value="0" min="0"></td>
+          <td><input type="number" class="form-control" class="form-control" id="jardim-1" value="0" min="0"></td>
           <td><input type="number" class="form-control" id="cancao-1" value="0" min="0"></td>
           <td><input type="number" class="form-control" id="bonusEncantados-1" value="0" min="0"></td>
           <td><span id="totalRodadaEncantados-1">0</span></td>
@@ -212,7 +245,7 @@
         </tr>
         <tr>
           <td><input type="text" class="form-control" id="nomeEncantados-2" placeholder="Jogador 2"></td>
-          <td><input type="number" class="form-control" id="jardim-2" value="0" min="0"></td>
+          <td><input type="number" class="form-control" class="form-control" id="jardim-2" value="0" min="0"></td>
           <td><input type="number" class="form-control" id="cancao-2" value="0" min="0"></td>
           <td><input type="number" class="form-control" id="bonusEncantados-2" value="0" min="0"></td>
           <td><span id="totalRodadaEncantados-2">0</span></td>
